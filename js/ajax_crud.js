@@ -1,7 +1,5 @@
  $(document).ready(function() {
    
-    
-
     $.ajax({
         'url': "http://localhost:8082/companyList",
         'method': "GET",
