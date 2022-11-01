@@ -9,7 +9,7 @@ import com.taison.employee.project.model.Company;
 import com.taison.employee.project.repository.CrudRepositoryEmployee;
 
 @Service
-public class CrudService {
+public class CrudService  {
 	
 	@Autowired
 	private CrudRepositoryEmployee crudRepository;
@@ -23,10 +23,18 @@ public class CrudService {
 	}
 	
 	public void saveOrUpdateCompany(Company company) {
-		crudRepository.save(company);
+		
+		if(company.getId() == null) {
+			crudRepository.save(company);
+		}else {
+			company.setName(company.getName());
+			crudRepository.save(company);
+		}
+		
 	}
 	
 	public void deleteCompany(Integer id) {
 		crudRepository.deleteById(id);
 	}
+	
 }
