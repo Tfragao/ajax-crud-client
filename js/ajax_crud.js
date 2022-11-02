@@ -47,7 +47,14 @@
         } );
 
         $('#table_id tbody').on('click', 'tr', function(){
-            
+
+          if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        } else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+
             var storedData = table.row( this ).data();
             $(".modal-body #nameDelete").val(storedData.name);
            
