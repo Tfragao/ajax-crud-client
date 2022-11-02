@@ -27,21 +27,22 @@
             $(document).delegate('#editSubmit', 'click', function(event) {
        
                 event.preventDefault();
+               
                 storedData.name = $('#name').val();
-              
+                
                 $.ajax({
                     type: "POST",
                     contentType: "application/json; charset=utf-8",
                     url: "http://localhost:8082/company/save",
-                    data: JSON.stringify({'name': storedData.name}),
+                    data: JSON.stringify({'id': storedData.id, 'name': storedData.name}),
                     cache: false,
                     success: function() {
                         alert("Company added successfully");
                         window.setTimeout(function(){location.reload()},1000);
                     }
                     
-                });      
-            
+                });               
+                            
             });
 
         } );
@@ -85,8 +86,7 @@
             
             event.preventDefault();
             var name = $('#nameSave').val();
-            console.log(name);
-        
+            
             if(name == null || name == ""){
                 alert("Name is required. Please fill the name field");
 
