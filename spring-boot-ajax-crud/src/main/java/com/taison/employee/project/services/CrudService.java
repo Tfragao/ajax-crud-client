@@ -27,8 +27,11 @@ public class CrudService  {
 		if(company.getId() == null) {
 			crudRepository.save(company);
 		}else {
-			company.setName(company.getName());
-			crudRepository.save(company);
+			if(company.getId() != null) {
+				company.setName(company.getName());
+				crudRepository.save(company);				
+			}
+			
 		}
 		
 	}
